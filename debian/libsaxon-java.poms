@@ -1,0 +1,2 @@
+debian/saxon.pom --has-package-version --java-lib --artifact=saxon.jar
+debian/saxon-jdom.pom --has-package-version --java-lib --artifact=saxon-jdom.jar

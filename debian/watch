@@ -1,0 +1,3 @@
+version=3
+opts=uversionmangle=s/-/./g \
+ http://sf.net/saxon/saxon(6[\d-]+)\.zip

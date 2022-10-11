@@ -1,0 +1,29 @@
+Description: Use uppercase encoding names since these are preferred to
+ the lowercase variants.
+Origin: "brian m. carlson" <sandals@crustytoothpaste.ath.cx>
+Bug-Debian: http://bugs.debian.org/568347
+
+diff -ur libsaxon-java.old/src/com/icl/saxon/output/HTMLEmitter.java libsaxon-java-6.5.5/src/com/icl/saxon/output/HTMLEmitter.java
+--- a/src/com/icl/saxon/output/HTMLEmitter.java	2010-12-01 01:00:41.000000000 +0000
++++ b/src/com/icl/saxon/output/HTMLEmitter.java	2010-12-01 01:02:35.000000000 +0000
+@@ -246,7 +246,7 @@
+             if (!("yes".equals(omitMeta))) {
+ 
+                 String encoding = outputProperties.getProperty(OutputKeys.ENCODING);
+-                if (encoding==null) encoding = "utf-8";
++                if (encoding==null) encoding = "UTF-8";
+ 
+                 AttributeCollection metaatts = new AttributeCollection(namePool);
+                 metaatts.addAttribute("", "", "http-equiv", "CDATA", "Content-Type");
+diff -ur libsaxon-java.old/src/com/icl/saxon/output/XMLEmitter.java libsaxon-java-6.5.5/src/com/icl/saxon/output/XMLEmitter.java
+--- a/src/com/icl/saxon/output/XMLEmitter.java	2010-12-01 01:00:41.000000000 +0000
++++ b/src/com/icl/saxon/output/XMLEmitter.java	2010-12-01 01:02:29.000000000 +0000
+@@ -95,7 +95,7 @@
+ 
+             String encoding = outputProperties.getProperty(OutputKeys.ENCODING);
+             if (encoding==null || encoding.equalsIgnoreCase("utf8")) {
+-                encoding = "utf-8";
++                encoding = "UTF-8";
+             }
+ 
+             if (!(encoding.equalsIgnoreCase("utf-8"))) {

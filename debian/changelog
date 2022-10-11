@@ -1,0 +1,268 @@
+libsaxon-java (1:6.5.5-12) unstable; urgency=medium
+
+  [ Chris West (Faux) ]
+  * Fix build with Java 9: -source, -encoding, javadoc -classpath
+    (Closes: #893290)
+
+  [ Emmanuel Bourg ]
+  * Standards-Version updated to 4.1.4
+  * Switch to debhelper level 11
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Fri, 06 Apr 2018 16:53:21 +0200
+
+libsaxon-java (1:6.5.5-11) unstable; urgency=medium
+
+  * Team upload.
+  * Removed the GCJ package
+  * Install the Maven artifacts for saxon-jdom
+  * Moved the javadoc to /usr/share/doc/libsaxon-java/api
+  * Moved the package to Git (Closes: #702969)
+  * Simplified debian/rules
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Mon, 19 Jun 2017 12:00:16 +0200
+
+libsaxon-java (1:6.5.5-10) unstable; urgency=low
+
+  * Team upload.
+  * Upload to sid
+  * Use dh(9); fix hardening-no-relro (lintian)
+  * Add missing man page
+
+ -- Mathieu Malaterre <malat@debian.org>  Wed, 15 May 2013 14:32:10 +0200
+
+libsaxon-java (1:6.5.5-9) experimental; urgency=low
+
+  [ Eugene Zhukov ]
+  * Team upload.
+  * Adds maven metadata to /usr/share/maven-repo
+  * maven-repo-helper added to Build-Depends in debian/control
+  * Bump Standards-Version to 3.9.4
+
+  [ Mathieu Malaterre ]
+  * Remove Michael Koch from Uploaders. Closes: #654093
+
+ -- Mathieu Malaterre <malat@debian.org>  Tue, 09 Apr 2013 11:30:46 +0200
+
+libsaxon-java (1:6.5.5-8) unstable; urgency=low
+
+  * Team upload.
+  * Apply path to ensure compatibility with OpenJDK7. (Closes: #651185)
+    - Thanks to James Page.
+  * Bump Standards-Version to 3.9.2.
+
+ -- tony mancill <tmancill@debian.org>  Wed, 28 Dec 2011 22:52:52 -0800
+
+libsaxon-java (1:6.5.5-7) unstable; urgency=low
+
+  * Team upload.
+  * Removed unneeded JREs from lib package.  Thanks to Brian M.
+    Carlson for the report.  (Closes: #584243)
+  * Removed Arnaud Vandyck from uploaders.  Thanks for your work
+    on this package.
+  * Bumped Standards-Versions to 3.9.1
+    - Moved the packages to the java section
+  * Use javadoc from default-java instead of openjdk-6.
+  * Use javahelper to install jar files.
+  * Rewrote d/rules as dh7 with overrides.
+  * Replaced default-jdk-builddep with default-jdk and
+    gcj-native-helper.
+  * Added missing ${misc:Depends}.
+  * Linked the javadoc against system javadoc.
+  * Accepted patch from Brian M. Carlson to make saxon use
+    uppercase encoding names.  (Closes: #568347)
+  * Converted source package to 3.0 (quilt).
+  * Updated the descriptions a bit.
+  * Moved javadoc compilation to binary/binary-indep to avoid it
+    being build when doing binary-only builds.
+
+ -- Niels Thykier <niels@thykier.net>  Sat, 12 Mar 2011 09:07:41 +0100
+
+libsaxon-java (1:6.5.5-6) unstable; urgency=low
+
+  * Fix last fix to only use javadoc from openjdk-6. (Closes: #559966)
+
+ -- Torsten Werner <twerner@debian.org>  Mon, 25 Jan 2010 21:44:06 +0100
+
+libsaxon-java (1:6.5.5-5.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Build API documentation with javadoc only if it available because gjdoc is
+    broken. (Closes: #559966)
+
+ -- Torsten Werner <twerner@debian.org>  Sun, 24 Jan 2010 18:29:04 +0100
+
+libsaxon-java (1:6.5.5-5) unstable; urgency=low
+
+  * Fixed saxon-xslt script. Removed saxon-xquery script.
+    Closes: #475102
+
+ -- Michael Koch <konqueror@gmx.de>  Tue, 03 Jun 2008 23:23:41 +0200
+
+libsaxon-java (1:6.5.5-4.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Build-depend on default-jdk-builddep, don't build anymore on
+    arm, alpha, hppa. Closes: #477900.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 10 May 2008 16:25:59 +0200
+
+libsaxon-java (1:6.5.5-4) unstable; urgency=low
+
+  * Add saxon-xslt and saxon-xquery scripts. Closes: #475102
+
+ -- Michael Koch <konqueror@gmx.de>  Wed, 09 Apr 2008 20:43:48 +0200
+
+libsaxon-java (1:6.5.5-3) unstable; urgency=low
+
+  * Build -gcj package. Closes: #458247.
+
+ -- Michael Koch <konqueror@gmx.de>  Sat, 29 Dec 2007 23:14:56 +0100
+
+libsaxon-java (1:6.5.5-2) unstable; urgency=low
+
+  * (Build-)Depends on java-gcj-compat(-dev).
+  * Removed Wolfgang from Uploaders and added myself.
+  * Updated Standards-Version to 3.7.3.
+  * Addd Homepage, Vcs-Svn and Vcs-Browser fields.
+  * Moved all Build-Depends-Indep to Build-Depends.
+  * Converted debian/copyright to UTF-8.
+  * debian/libsaxon-java-doc.doc-base: Remove unneeded
+    empty lines.
+  * Clean up debian/rules.
+
+ -- Michael Koch <konqueror@gmx.de>  Sat, 29 Dec 2007 22:41:57 +0100
+
+libsaxon-java (1:6.5.5-1) unstable; urgency=low
+
+  * New upstream release
+  * Added note about the commandline switch to disable execution of 
+     java extension in XSLTs to README.Debian (closes: #341745)
+  * Remove libgnujaxp-java dependencies - not needed anymore
+  * Add the documentation package to suggests
+  * Move -doc package to main - was forgotten during the move of the library
+  * Formatted description and shortened the description of the doc package
+  * Moved part about repackaging from README.Debian 
+     into a new README.Debian-source file.
+
+ -- Wolfgang Baer <WBaer@gmx.de>  Thu,  5 Jan 2006 11:25:01 +0100
+
+libsaxon-java (1:6.5.4-2) unstable; urgency=low
+
+  * Provide a Manifest file with Main-class entry and suppress
+    the automatic generation of a second Manifest file (closes: #326207)
+  * Added lintian override for wrong-name-for-upstream-changelog
+    as this is a needed html file of the manual
+
+  * Upload sponsored by Petter Reinholdtsen
+
+ -- Wolfgang Baer <WBaer@gmx.de>  Tue, 06 Sep 2005 12:28:39 +0200
+
+libsaxon-java (1:6.5.4-1) unstable; urgency=low
+
+  * New upstream release 
+  * fop support is dropped upstream
+    - updated debian dir to remove fop specific build stuff
+    - removed fop build-dep and suggests
+  * Move to main (closes: #122556)
+  * Build with kaffe / jikes / gjdoc
+  * Removed conflicts,provides,replaces with lib-saxon-java
+  * Changed libjdom-java to the final release libjdom1-java
+  * Standards-Version 3.6.2 (no changes)
+
+  * Upload sponsored by Arnaud Vandyck
+
+ -- Wolfgang Baer <WBaer@gmx.de>  Tue, 16 Aug 2005 22:46:04 +0200
+
+libsaxon-java (1:6.5.3-4) unstable; urgency=low
+
+  * Reverted conflicts, provides, replaces lib-saxon-java for the Woody to
+    Sarge smooth transition
+
+ -- Arnaud Vandyck <avdyk@debian.org>  Sat,  7 May 2005 17:51:37 +0200
+
+libsaxon-java (1:6.5.3-3) unstable; urgency=low
+
+  * Added dependency on gjdoc and added support to non-free jdk dirs,
+    thanks to Andreas Jochen (closes: #306775).
+  * Removed conflicts, provides, replaces lib-saxon-java which will be
+    remove from the archive.
+
+ -- Arnaud Vandyck <avdyk@debian.org>  Mon,  2 May 2005 12:09:33 +0200
+
+libsaxon-java (1:6.5.3-2) unstable; urgency=medium
+
+  * Adjusted libfop-java dependency to fop to fix
+    FTBS (closes: #301369)
+  * Urgency medium to get it into sarge
+  * Removed section in README.Debian suggesting using a non-free jdk
+    Although built with a non-free jdk - it should work with free runtimes.
+  * Javadoc builds now from source
+  * avdyk: added Wolfgang to the uploaders
+  
+ -- Wolfgang Baer <WBaer@gmx.de>  Sun, 27 Mar 2005 22:57:23 +0200
+
+libsaxon-java (1:6.5.3-1) unstable; urgency=low
+
+  * The real release is not 6.5.4 but 6.5.3 (closes: #229339)
+  * New maintainer: Debian Java Maintainers
+    <pkg-java-maintainers@lists.alioth.debian.org> and I as an
+    uploader. Mark is no more interested in this package.
+
+ -- Arnaud Vandyck <avdyk@debian.org>  Tue, 23 Mar 2004 15:47:14 +0100
+
+libsaxon-java (6.5.4-0.3) unstable; urgency=low
+
+  * Re-Build with non-free JDK, it's the only way I found to solve the
+    'missing classe' (that's not a missing class but the compiler seems to
+    make it wrong). It may be good to investigate this bug... maybe it's a
+    gnujaxp problem! (closes: #229337).
+
+ -- Arnaud Vandyck <avdyk@debian.org>  Sat, 24 Jan 2004 13:55:26 +0100
+
+libsaxon-java (6.5.4-0.2) unstable; urgency=low
+
+  * NMU
+  * rebuild to fix broken Build-Depends-Indep (closes: #212817)
+
+ -- Rene Engelhard <rene@debian.org>  Mon, 29 Dec 2003 21:29:45 +0100
+
+libsaxon-java (6.5.4-0.1) unstable; urgency=low
+
+  * Non maintainer upload (0-day NMU policy)
+  * New upstream release.
+    - 6.5.4. is most recent release (Closes: #154155)
+    - upstream fixed Namespace errors (Closes: #151007)
+    - upstream fixed curly braces handling (Closes: #141334)
+  * Packaging with new debian/rules based on the one found at
+    http://vbstefi60.fapse.ulg.ac.be/~arnaud/saxon/
+    Thanks, Arnaud.
+  * Name changed from lib-saxon-java to libsaxon-java (Closes: #188460)
+  * Added libsaxon-java-doc package. (Closes: #176763), (Closes: #143346)
+    generation of api docs with gjdoc crashed on my machine,
+    so I used javadoc and included the generated files.
+
+ -- Bastian Kleineidam <calvin@debian.org>  Mon,  8 Sep 2003 21:25:28 +0200
+
+lib-saxon-java (6.4.4-1) unstable; urgency=low
+
+  * New upstream release. Closes: bug#107786
+  * Ditched old versions.
+
+ -- Mark Johnson <mrj@debian.org>  Fri, 21 Sep 2001 06:33:43 -0400
+
+lib-saxon-java (6.3-2) unstable; urgency=low
+
+  * Fixed doc-base entry.
+  * Changed Recommends from saxon-catalog to saxon.
+
+ -- Mark Johnson <mrj@debian.org>  Sat,  7 Jul 2001 21:47:55 -0400
+
+lib-saxon-java (6.3-1) unstable; urgency=low
+
+  * Initial Release. Closes: bug#101738
+
+ -- Mark Johnson <mrj@debian.org>  Thu, 21 Jun 2001 05:43:37 -0400
+
+Local variables:
+mode: debian-changelog
+End:

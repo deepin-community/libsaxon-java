@@ -1,0 +1,33 @@
+#!/usr/bin/make -f
+
+UPSTREAM_VERSION=6.5.5
+JAVA_HOME=/usr/lib/jvm/default-java
+SOURCES=src
+BUILD=build
+APIDOC=build/api
+JDOM=com/icl/saxon/jdom
+CLASSPATH = /usr/share/java/jdom1.jar
+JAVADOC = $(JAVA_HOME)/bin/javadoc -encoding ISO-8859-1
+
+%:
+	dh $@ --with javahelper --with maven-repo-helper
+
+override_dh_auto_build:
+	mkdir -p $(BUILD) $(APIDOC)
+	$(JAVA_HOME)/bin/javac -nowarn -source 1.8 -target 1.8 -sourcepath $(SOURCES) -classpath $(CLASSPATH) -d $(BUILD) \
+		-encoding ISO-8859-1 \
+		`find $(SOURCES) -name \*.java`
+	cp -r $(SOURCES)/META-INF $(BUILD)
+	cp debian/MANIFEST.MF $(BUILD)/META-INF
+	# split off jdom classes, everything else into saxon.jar
+	(cd $(BUILD); $(JAVA_HOME)/bin/jar -cfM ../saxon.jar META-INF `find . -name \*.class | egrep -v $(JDOM)`; \
+	 $(JAVA_HOME)/bin/jar -cfM ../saxon-jdom.jar $(JDOM)/*.class )
+
+	# build the javadoc
+	(cd $(APIDOC) ; $(JAVADOC) -sourcepath ../../$(SOURCES) -link /usr/share/doc/default-jdk-doc/api \
+		-classpath $(CLASSPATH) \
+		-link /usr/share/doc/libjdom1-java/api @../../debian/javadoc-args )
+
+debian/saxon-xslt.1: debian/saxon-xslt.1.in
+	help2man --include=$< --output=$@ --help-option="-?" \
+		--no-info `basename $@ .1` --version-string=$(UPSTREAM_VERSION) --no-discard-stderr

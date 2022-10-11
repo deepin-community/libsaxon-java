@@ -1,0 +1,10 @@
+libsaxon-java for debian
+-------------------------
+
+I did completly revamped saxon. First Saxon is shipped in a zip form
+with compiled classes and jar files. I did unzip the original, removed
+the jar files and the javadoc (everything I can build). Then, I unjar
+the sources and put them in a 'src' directory. Finally I created an orig
+tarball.
+
+ -- Arnaud Vandyck <arnaud.vandyck@ulg.ac.be>, Wed Aug  6 19:29:01 2003
